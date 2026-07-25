@@ -4,14 +4,14 @@ import React from "react";
 export default function Trust() {
   return (
     <div className="trust-main   flex justify-center  items-center py-20">
-      <div className="trust-container flex justify-between max-w-[1400px]  gap-8  ">
+      <div className="trust-container grid lg:flex justify-between max-w-[1400px]  gap-8 p-2 md:p-0 ">
         <div className="trus-left ">
           <div className="trust-t-content ">
-            <h2 className="text-[48px] font-bold leading-tight ">
+            <h2 className="text-2xl sm:text-3xl md:text-[36px] lg:text-[40px] font-bold leading-tight ">
               Join Thousands Who Found Success Through <span className="text-[#3C65F5]">JobHunt’s</span> Trusted
               Platform.
             </h2>
-            <p className="text-[20px] py-4">
+            <p className="text-sm md:text-[20px] py-4 text-justify">
               Job Hunt Placement is a premier recruitment agency based in
               Siliguri, West Bengal, with over 20 years of experience in
               providing comprehensive manpower solutions. We specialize in
@@ -38,18 +38,18 @@ export default function Trust() {
             </p>
           </div>
         </div>
-        <div className="trust-right flex flex-col gap-8 ">
-          <div className="t-r-t w-[600px]">
-            <div className="t-image-contnet ">
+        <div className="trust-right flex flex-col justify-center items-center gap-8 ">
+          <div className="t-r-t w-fit md:w-[600px] ">
+            <div className="t-image-contnet h-[400px] ">
               <Image
                 src="/assets/s-frame-content.png"
                 width={500}
                 height={200}
-                className="w-full rounded-md"
+                className="w-full h-full object-cover rounded-md"
               />
             </div>
           </div>
-          <div className="t-r-b flex gap-4 text-white text-center ">
+          <div className="t-r-b grid  md:flex gap-4 text-white text-center ">
             <div className="t-page-left-content p-8 flex rounded-md flex-col items-center justify-center bg-[#3C65F5]">
               <h3 className="text-4xl font-bold">2k+</h3>
               <h4 className="text-3xl ">Happy Candidates</h4>

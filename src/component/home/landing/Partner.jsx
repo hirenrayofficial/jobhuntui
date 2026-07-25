@@ -23,7 +23,7 @@ const partnerImage = [
   },
   {
     partner_name: "paisabazar",
-    image: "/assets/paisabazar.png",
+    image: "/assets/paisabazaar.png",
   },
   {
     partner_name: "cleartax",
@@ -33,15 +33,15 @@ const partnerImage = [
 export default function Partner() {
   return (
     <div>
-      <div className="brand-partner flex justify-center">
+      <div className="brand-partner flex flex-wrap justify-center">
         {partnerImage.map((partnerImage, index) => (
-          <div className="parter-content w-full max-w-[200px]" key={index}>
+          <div className="parter-content w-full max-w-[100px] md:max-w-[200px] " key={index}>
             <Image
               src={partnerImage.image}
               alt={partnerImage.partner_name}
               width={200}
               height={50}
-              className="object-cover h-[60px] w-[200px]"
+              className="object-contain h-[60px] w-[200px]"
             />
           </div>
         ))}

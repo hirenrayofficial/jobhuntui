@@ -113,10 +113,10 @@ export default function Jobs() {
     setActivetab(name);
   };
   return (
-    <div className="job-main w-full flex justify-center items-center px-4 md:px-8">
+    <div className="job-main w-full flex justify-center items-center md:px-8">
       <div className="job-container flex flex-col w-full max-w-[1400px]">
         <div className="job-heading">
-          <h2 className="text-[40px]">
+          <h2 className="text-2xl sm:text-3xl md:text-[36px] lg:text-[40px]  font-bold leading-tight">
             Explore New <span className="text-[#3C65F5]">Opprtunities</span>
           </h2>
           <p className="text-[18px]">

@@ -37,14 +37,14 @@ export default function Stories() {
     <div className="stories-main w-full flex justify-center items-center py-4">
       <div className="stories-container flex flex-col gap-8 w-full  max-w-[1400px]">
         <div className="stories-top leading-tight">
-          <h3 className="text-[48px] font-bold ">
+          <h3 className="text-2xl sm:text-3xl md:text-[36px] lg:text-[40px] font-bold ">
             Proven <span className="text-[#3C65F5] ">Success</span> Stories
           </h3>
           <p className="text-gray-500">
             Thousands hired through our trusted, high-speed placement system.
           </p>
         </div>
-        <div className="stories-content flex flex-wrap justify-between gap-4">
+        <div className="stories-content flex flex-wrap justify-center sm:justify-between md:justify-between gap-4">
           {Stories.map((p, index) => (
             <div
               key={index.id}

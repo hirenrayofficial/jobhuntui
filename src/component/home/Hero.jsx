@@ -9,24 +9,28 @@ import Stories from "./landing/section/Stories";
 import SuccesTestimonial from "./landing/section/SuccesTestimonial";
 import Placement from "./landing/section/Placement";
 import JobLocation from "./landing/section/JobLocation";
+import Footer from "./layout/Footer";
 
 export default function Hero() {
   return (
-    <div className="bg-[#F1F5FA] ">
-      <div className="w-full">
+    <div className="bg-[#F1F5FA]  ">
+      <div className="w-full ">
         <header><Header/></header>
 
-        <main>
-          {/* <Landing/>
+        <main className="px-2">
+          <Landing/>
           <Partner/>
           <Trust />
           <Jobs />
           <Process/>
           <Stories/>
-          <SuccesTestimonial/> */}
+          <SuccesTestimonial/>
           <Placement/>
           <JobLocation/>
         </main>
+        <footer>
+          <Footer/>
+        </footer>
       </div>
     </div>
   );

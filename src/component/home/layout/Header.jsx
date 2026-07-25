@@ -68,7 +68,7 @@ export default function Header() {
             </div>
           ))}
         </div>
-        <div className="header-right w-full max-w-[150px] ">
+        <div className="header-right w-full max-w-[140px] md:max-w-[150px] ">
           <div className="b text-lg w-full">
             <Primarybutton label={"Apply Now"} />
           </div>

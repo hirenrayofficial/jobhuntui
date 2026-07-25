@@ -44,7 +44,7 @@ export default function SuccesTestimonial() {
     <div className="succes-main w-full flex justify-center items-center py-8">
       <div className="proccess-container flex flex-col gap-8 w-full  max-w-[1400px]">
         <div className="succes-top leading-tight">
-          <h3 className="text-[48px] font-bold ">
+          <h3 className="text-2xl sm:text-3xl md:text-[36px] lg:text-[40px] font-bold ">
             Success <span className="text-[#3C65F5] ">Stories</span> Galore
           </h3>
           <p className="text-gray-500">
