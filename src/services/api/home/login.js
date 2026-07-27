@@ -12,7 +12,7 @@ export const LoginNow = async (email, pass) => {
     })
 
     // i don't want to use this // 
-    Cookies.set("tokens",res.data.token)
+    Cookies.set("token",res.data.token)
 
     if (!res) {
         return
