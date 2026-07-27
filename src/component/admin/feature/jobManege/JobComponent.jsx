@@ -26,7 +26,7 @@ export default function JobComponent() {
   const handelDelete = async (id) => {
     const deletePromis = async () => {
       const res = await deleteJob(id);
-      if (!res.dt) {
+      if (!res) {
         throw new Error(res?.message) || "Delete Error";
       }
       return res;
