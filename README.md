@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Hiii Devloper 
 
-## Getting Started
 
-First, run the development server:
+Getting Start 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+basic -
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ npm run dev 
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+ >for start the project 
+ and if you want fully functional or run complete project so require backend and give the backend route location 
 
-To learn more about Next.js, take a look at the following resources:
+ like this --
+ NEXT_PUBLIC_API_ENDPOINT=http://localhost:3001
+NEXT_PUBLIC_SECRET_KEY=secjobhunt@sfnsjkjksdds65vjhbjhasd
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+and thats all of this to run 
+or how work the website 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+fetures>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+>> view job  (hoe many jobs available or exist for appply !importent dont click apply button becuse i dotn create workingble button for job if i create so take many time to make so i don't createign the apply feture )
+
+>> admin login yes you are login as a admin here is the admin login credential
+            email: jobhunt@admin.com
+            pass: jobhunt404,
+
+
+            login route = /home/login
+
+thats work for test the site not permanent
+
+next
+ >>admin/slider
+ the slider are use for coustom iamge to show on the landing page  and i make only upload but not use on landing page or delete or update .etc only make the slider an view on the admin panel only
+
+ next
+ >> admin/job
+
+
+ yes this the first i make fully fucntional with create job and view on landing page with edit delit or status active /inactive ./etc so try this 
+
+ and last only make component 
+ >>/admin/media
+ (!importent i dont make any functional for the coponent so just view only page)
+
+ 
+
+ Authenication
+
+ i use coookies for this first i use coookes credential to autosave the cokkkies in browser nad it work but production time that not saved so i use side saved like js-cookie packege for manuallly store the cokkies and when any admin login and visit the admin page so check the role or cookies i know that not rela security but i don't have or more time so i create the last for shortcut ok thats the security or not add any authorizetion on backend for check admin only use admin route it's tottaly independent anyone use the api 
+
+ ohh last i use imagebib for uplaod image for unlimited 
+ or api
+ ok thanks for read this byy byyy if thats goood so i try to make real for rela users if our hr appproved for test thanks you (sir)
