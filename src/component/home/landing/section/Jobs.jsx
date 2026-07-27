@@ -1,122 +1,52 @@
 "use client";
 import TabButtonOutline from "@/hooks/button/TabButtonOutline";
 import Jobcard from "@/hooks/card/Jobcard";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
-export default function Jobs() {
+export default function Jobs({ job = [] }) {
   const Jobtab = [
     {
       id: 1,
-      tab_name: "Management",
+      tab_name: "All",
       tab_view: "",
     },
     {
       id: 2,
-      tab_name: "Marketing & Sales",
+      tab_name: "IT",
       tab_view: "",
     },
-    ,
     {
       id: 3,
-      tab_name: "Design",
+      tab_name: "Digital Marketing",
       tab_view: "",
     },
     {
       id: 4,
-      tab_name: "Retail & Products",
+      tab_name: "Acountent",
       tab_view: "",
     },
   ];
 
-  const jobDetails = [
-    {
-      id: 1,
-      job_thub: "/assets/nykaa.png",
-      job_name: "Htel Udhan Darjeeling",
-      job_description:
-        "Thdfdsja sdfdjkasfjksa fajsdfksfjkd ioasdjfksdaf iojfiojsdfa iojdkjfknsdjkfhisdfna offjkashdfjasfasfhasjkgfjkgbasjghjkfbjsdfjasd fisdah fjsdhcisfh sdiasnf sdigfiusdhfsdjk asuidf sduiff uisd",
-      job_creator: "Sr. Graphic Designer",
-      job_category: "Design Arcitecture",
-      job_type: "Full-Time",
-      job_tag: [{ tag_name: "Design" }, { tag_name: "Adobe Photoshop" }],
-      sallery: "15k",
-    },
-    {
-      id: 2,
-      job_thub: "/assets/nykaa.png",
-      job_name: "Htel Udhan Darjeeling",
-      job_description:
-        "Thdfdsja sdfdjkasfjksa fajsdfksfjkd ioasdjfksdaf iojfiojsdfa iojdkjfknsdjkfhisdfna offjkashdfjasfasfhasjkgfjkgbasjghjkfbjsdfjasd fisdah fjsdhcisfh sdiasnf sdigfiusdhfsdjk asuidf sduiff uisd",
-      job_creator: "Sr. Graphic Designer",
-      job_category: "Design Arcitecture",
-      job_type: "Full-Time",
-      job_tag: [{ tag_name: "Design" }, { tag_name: "Adobe Photoshop" }],
-      sallery: "15k",
-    },
-    {
-      id: 3,
-      job_thub: "/assets/nykaa.png",
-      job_name: "Htel Udhan Darjeeling",
-      job_description:
-        "Thdfdsja sdfdjkasfjksa fajsdfksfjkd ioasdjfksdaf iojfiojsdfa iojdkjfknsdjkfhisdfna offjkashdfjasfasfhasjkgfjkgbasjghjkfbjsdfjasd fisdah fjsdhcisfh sdiasnf sdigfiusdhfsdjk asuidf sduiff uisd",
-      job_creator: "Sr. Graphic Designer",
-      job_category: "Design Arcitecture",
-      job_type: "Full-Time",
-      job_tag: [{ tag_name: "Design" }, { tag_name: "Adobe Photoshop" }],
-      sallery: "15k",
-    },
-    {
-      id: 4,
-      job_thub: "/assets/nykaa.png",
-      job_name: "Htel Udhan Darjeeling",
-      job_description:
-        "Thdfdsja sdfdjkasfjksa fajsdfksfjkd ioasdjfksdaf iojfiojsdfa iojdkjfknsdjkfhisdfna offjkashdfjasfasfhasjkgfjkgbasjghjkfbjsdfjasd fisdah fjsdhcisfh sdiasnf sdigfiusdhfsdjk asuidf sduiff uisd",
-      job_creator: "Sr. Graphic Designer",
-      job_category: "Design Arcitecture",
-      job_type: "Full-Time",
-      job_tag: [{ tag_name: "Design" }, { tag_name: "Adobe Photoshop" }],
-      sallery: "15k",
-    },
-    {
-      id: 5,
-      job_thub: "/assets/nykaa.png",
-      job_name: "Htel Udhan Darjeeling",
-      job_description:
-        "Thdfdsja sdfdjkasfjksa fajsdfksfjkd ioasdjfksdaf iojfiojsdfa iojdkjfknsdjkfhisdfna offjkashdfjasfasfhasjkgfjkgbasjghjkfbjsdfjasd fisdah fjsdhcisfh sdiasnf sdigfiusdhfsdjk asuidf sduiff uisd",
-      job_creator: "Sr. Graphic Designer",
-      job_category: "Design Arcitecture",
-      job_type: "Full-Time",
-      job_tag: [{ tag_name: "Design" }, { tag_name: "Adobe Photoshop" }],
-      sallery: "15k",
-    },
-    {
-      id: 6,
-      job_thub: "/assets/nykaa.png",
-      job_name: "Htel Udhan Darjeeling",
-      job_description:
-        "Thdfdsja sdfdjkasfjksa fajsdfksfjkd ioasdjfksdaf iojfiojsdfa iojdkjfknsdjkfhisdfna offjkashdfjasfasfhasjkgfjkgbasjghjkfbjsdfjasd fisdah fjsdhcisfh sdiasnf sdigfiusdhfsdjk asuidf sduiff uisd",
-      job_creator: "Sr. Graphic Designer",
-      job_category: "Design Arcitecture",
-      job_type: "Full-Time",
-      job_tag: [{ tag_name: "Design" }, { tag_name: "Adobe Photoshop" }],
-      sallery: "15k",
-    },
-  ];
-
-  const [activetab, setActivetab] = useState("Management");
-
-  const renderError = () => {
-    return <>hiiii</>;
-  };
+  const [activetab, setActivetab] = useState("All");
 
   const handeltabclick = (name) => {
     setActivetab(name);
   };
+
+  const filteredJobs =
+    activetab === "All"
+      ? job
+      : job.filter((item) =>
+          Array.isArray(item.job_category)
+            ? item.job_category.includes(activetab)
+            : item.job_category === activetab,
+        );
+
   return (
     <div className="job-main w-full flex justify-center items-center md:px-8">
       <div className="job-container flex flex-col w-full max-w-[1400px]">
         <div className="job-heading">
-          <h2 className="text-2xl sm:text-3xl md:text-[36px] lg:text-[40px]  font-bold leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-[36px] lg:text-[40px] font-bold leading-tight">
             Explore New <span className="text-[#3C65F5]">Opprtunities</span>
           </h2>
           <p className="text-[18px]">
@@ -125,7 +55,7 @@ export default function Jobs() {
           </p>
         </div>
 
-        <div className="job-tab-content flex flex-wrap  gap-4 py-4 w-full">
+        <div className="job-tab-content flex flex-wrap gap-4 py-4 w-full">
           {Jobtab.map((t) => (
             <div className="tab-sectio" key={t.id}>
               <TabButtonOutline
@@ -138,7 +68,11 @@ export default function Jobs() {
         </div>
 
         <div className="job-view-component h-fit w-full flex flex-col justify-center items-center">
-          {activetab === "Management" ? <Jobcard details={jobDetails} /> : <renderError/>}
+          {filteredJobs.length > 0 ? (
+            <Jobcard details={filteredJobs} />
+          ) : (
+            <div className="py-12 flex text-center text-gray-500 h-100 items-center">No job find This Category</div>
+          )}
         </div>
       </div>
     </div>

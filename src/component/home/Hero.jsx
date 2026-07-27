@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Header from "./layout/Header";
 import Landing from "./landing/Landing";
@@ -10,26 +11,36 @@ import SuccesTestimonial from "./landing/section/SuccesTestimonial";
 import Placement from "./landing/section/Placement";
 import JobLocation from "./landing/section/JobLocation";
 import Footer from "./layout/Footer";
+import { useQuery } from "@tanstack/react-query";
+import { getJob } from "@/services/api/home/jobGet";
 
 export default function Hero() {
+
+  const {data} = useQuery({
+    queryKey: ["job"],
+    queryFn :getJob
+  })
+  console.log(data)
   return (
     <div className="bg-[#F1F5FA]  ">
       <div className="w-full ">
-        <header><Header/></header>
+        <header>
+          <Header />
+        </header>
 
         <main className="px-2">
-          <Landing/>
-          <Partner/>
+          <Landing />
+          <Partner />
           <Trust />
-          <Jobs />
-          <Process/>
-          <Stories/>
-          <SuccesTestimonial/>
-          <Placement/>
-          <JobLocation/>
+          <Jobs job={data}/>
+          <Process />
+          <Stories />
+          <SuccesTestimonial />
+          <Placement />
+          <JobLocation />
         </main>
         <footer>
-          <Footer/>
+          <Footer />
         </footer>
       </div>
     </div>

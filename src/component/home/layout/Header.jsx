@@ -2,8 +2,8 @@
 import Primarybutton from "@/hooks/button/Primarybutton";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
+import { usePathname, } from "next/navigation";
+import React from "react";
 
 export default function Header() {
   //nav link

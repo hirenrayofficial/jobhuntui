@@ -1,10 +1,9 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Play, Pause, Volume2, VolumeX, Maximize } from 'lucide-react';
+import { Play, Pause} from 'lucide-react';
 
 export default function VideoPlayer({ src, poster }) {
-  const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
 

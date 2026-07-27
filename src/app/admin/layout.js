@@ -1,3 +1,5 @@
+import AdminHeader from "@/component/admin/layout/AdminHeader";
+import AdminProtector from "@/services/protect/AdminProtector";
 
 
 export const metadata = {
@@ -11,7 +13,10 @@ export default function RootLayout({ children }) {
       lang="en"
       className=""
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <header>
+        <AdminHeader/>
+      </header>
+      <body className="min-h-full flex flex-col "><AdminProtector>{children}</AdminProtector></body>
     </html>
   );
 }
