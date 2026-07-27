@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getSlider, postSlider } from "@/services/api/admin/sliderGet";
 import { imgUploader } from "@/services/api/admin/jobGet";
 import axios from "axios";
+import { toast } from "sonner";
 
 export default function SliderComponent() {
   const endpoint = process.env.NEXT_PUBLIC_API_ENDPOINT;
@@ -56,13 +57,45 @@ export default function SliderComponent() {
 
     const formData = new FormData();
     formData.append("image", file);
-    const imgUp = await imgUploader(formData);
-    setImg(imgUp);
+
+    const uploadPromise = async () => {
+      const imgUp = await imgUploader(formData);
+
+      if (!imgUp.upload) {
+        throw new Error(imgUp?.message || "Upload failed");
+      }
+      return imgUp;
+    };
+
+    toast.promise(uploadPromise(), {
+      loading: "Uploading...",
+      success: (data) => {
+        setImg(data.imageUrl);
+        return "Upload Successful";
+      },
+      error: (err) => {
+        return err.message || "Upload Failed";
+      },
+    });
   };
 
   const handelSlidesb = async () => {
-    const res = await postSlider(name,img)
-    console.log(res);
+    const postPromis = async () => {
+      const res = await postSlider(name, img);
+      if (!res.save) {
+        throw new Error(res?.message) || "Upload error";
+      }
+      return res;
+    };
+    toast.promise(postPromis,{
+      loading: "Slider Upload",
+      success: (data)=>{
+        return "Slider Uploaded"
+      },
+      error: (err)=>{
+        return err?.message || "Faild to upload Slider"
+      }
+    })
   };
   return (
     <div className="slider-main w-full px-8 py-20">
@@ -75,7 +108,7 @@ export default function SliderComponent() {
             <div className="inpts flex gap-8">
               <input
                 type="text"
-                onChange={(e)=>setname(e.target.value)}
+                onChange={(e) => setname(e.target.value)}
                 className="py-2 px-4 border w-full border-gray-300 rounded-md focus:outline-none"
                 placeholder="Slider name"
               />
@@ -88,7 +121,7 @@ export default function SliderComponent() {
               />
             </div>
             <div className="bt flex gap-4">
-              <Submitbt bg={"Black"} click={handelSlidesb} label={"Submit"} />
+              <Submitbt bg={"Black"} click={handelSlidesb} disabled={!img} label={"Submit"} />
               <button
                 className={`cursor-pointer py-2 px-8  text-white bg-[#020625] rounded-md`}
               >

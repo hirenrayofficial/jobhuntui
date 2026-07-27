@@ -10,5 +10,5 @@ export const LoginNow = async(email,pass)=>{
         return
     }
     console.log(res)
-    return res.data.login
+    return res.data
 }

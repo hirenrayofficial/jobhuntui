@@ -3,6 +3,7 @@ import Submitbt from "@/hooks/button/admin/Submitbt";
 import { LoginNow } from "@/services/api/home/login";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 export default function LoginDesign() {
   const [email, setEmail] = useState("");
@@ -10,12 +11,25 @@ export default function LoginDesign() {
   const router = useRouter();
 
   const handelLogin = async () => {
-    const res = await LoginNow(email, pass);
-    console.log(res);
-    if (!res) {
-      return;
-    }
-    router.push("/admin/slider");
+    const loginPromise = (async () => {
+      const res = await LoginNow(email, pass);
+      if (!res.login) {
+        throw new Error(res?.message || "Invalid credentials");
+      }
+
+      return res;
+    })();
+
+    toast.promise(loginPromise, {
+      loading: "Under Process...",
+      success: (data) => {
+        router.push("/admin/slider");
+        return "Approved Successfully!";
+      },
+      error: (err) => {
+        return err?.message || "Failed to approve";
+      },
+    });
   };
 
   return (

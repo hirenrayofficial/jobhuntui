@@ -9,34 +9,15 @@ export const getJob = async () => {
 }
 
 export const postJob = async (formDataFromComponent) => {
-    // Extract the actual File object stored under "img"
-    const file = formDataFromComponent.get("file");
+    const res = await axios.post(endpoint+"/api/admin/job", formDataFromComponent);
 
-    // Gather all text fields into a plain object to match backend's JSON.parse(formData.get("data"))
-    const dataObj = {
-        name: formDataFromComponent.get("name"),
-        designation: formDataFromComponent.get("designation"),
-        salary: formDataFromComponent.get("salary"),
-        type: formDataFromComponent.get("type"),
-        location: formDataFromComponent.get("location"),
-        skill: formDataFromComponent.get("skill"),
-        details: formDataFromComponent.get("details"),
-        date: formDataFromComponent.get("date"),
-        category: formDataFromComponent.get("category"),
-        image:formDataFromComponent.get("image")
-    };
-
-    // Build the final FormData structure expected by your Next.js backend
-    const backendFormData = new FormData();
-
-    if (file && typeof file !== "string") {
-        backendFormData.append("file", file); // Appends the actual File/Blob object
+    if (!res) {
+        return;
     }
-
-    backendFormData.append("data", JSON.stringify(dataObj));
-
-    // Send via Axios
-    const res = await axios.post(endpoint+"/api/admin/job", backendFormData);
+    return res.data;
+};
+export const jobUpdate = async (formDataFromComponent,id) => {
+    const res = await axios.put(endpoint+`/api/admin/job?id=${id}`, formDataFromComponent);
 
     if (!res) {
         return;
@@ -48,13 +29,13 @@ export const imgUploader = async (formData) => {
     if(!res){
         return
     }
-    return res.data.imageUrl
+    return res.data
 }
 export const deleteJob = async(id)=>{
     const res = await axios.delete(endpoint + `/api/admin/job?id=${id}`)
 }
 
-export const updateStatus = async()=>{
-    const res = await axios.put(endpoint+ `/api/admin/job`)
+export const updateStatus = async(id,active)=>{
+    const res = await axios.put(endpoint+ `/api/admin/job/status?id=${id}&active=${active}`)
     return res
 }

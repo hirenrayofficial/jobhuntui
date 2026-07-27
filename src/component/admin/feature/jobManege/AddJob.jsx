@@ -2,6 +2,7 @@
 import Submitbt from "@/hooks/button/admin/Submitbt";
 import { imgUploader, postJob } from "@/services/api/admin/jobGet";
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 export default function AddJob() {
   const [name, setName] = useState(true);
@@ -25,7 +26,7 @@ export default function AddJob() {
     formData.append("location", location);
     formData.append("skill", skill);
     formData.append("details", details);
-    formData.append("image",img)
+    formData.append("image", img);
 
     if (date) {
       formData.append("date", date);
@@ -33,12 +34,22 @@ export default function AddJob() {
 
     formData.append("category", category);
 
-    try {
+    const jobSbPromis = async () => {
       const res = await postJob(formData);
-      console.log("Job saved successfully:", res);
-    } catch (error) {
-      console.error("Error saving job:", error);
-    }
+      if (!res.sb) {
+        throw new Error(res?.message) || "Job upload error";
+      }
+      return res;
+    };
+    toast.promise(jobSbPromis, {
+      loading: "Job Posting...",
+      success: (data) => {
+        return "Job Submited";
+      },
+      error: (err) => {
+        return err.message || "Job Upload error";
+      },
+    });
   };
   const getImage = async (e) => {
     const file = e.target.files[0];
@@ -46,8 +57,27 @@ export default function AddJob() {
 
     const formData = new FormData();
     formData.append("image", file);
-    const imgUp =await  imgUploader(formData)
-    setImg(imgUp)
+    const uploadPromise = async () => {
+      const imgUp = await imgUploader(formData);
+
+      if (!imgUp.upload) {
+        throw new Error(imgUp?.message || "Upload failed");
+      }
+      return imgUp;
+    };
+
+    toast.promise(uploadPromise(), {
+      loading: "Uploading...",
+      success: (data) => {
+        setImg(data.imageUrl);
+        return "Upload Successful";
+      },
+      error: (err) => {
+        return err.message || "Upload Failed";
+      },
+    });
+    // const imgUp =await  imgUploader(formData)
+    // setImg(imgUp.imageUrl)
   };
   return (
     <div className="job-add-main py-20 px-8">

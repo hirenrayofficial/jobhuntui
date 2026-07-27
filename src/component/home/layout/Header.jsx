@@ -52,7 +52,7 @@ export default function Header() {
             <Image src="/assets/brand.png" width={150} height={42} />
           </div>
         </div>
-        <div className="header-center hidden md:flex w-full justify-center items-center gap-[28px]">
+        <div className="header-center hidden  lg:flex w-full justify-center items-center gap-[28px]">
           {navlink.map((m, index) => (
             <div className="nev-link  text-lg" key={index}>
               <Link
