@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { redirect } from "next/navigation";
 
 export default async function AdminProtector({ children }) {
-  const SECRET_KEY = "secjobhunt@sfnsjkjksdds65vjhbjhasd";
+  const SECRET_KEY = process.env.NEXT_PUBLIC_SECRET_KEY;
   
   try {
     const cookieStore = await cookies();
